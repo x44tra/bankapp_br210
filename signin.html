@@ -41,13 +41,17 @@
 
             if(user){
                 localStorage.setItem('currentuser',JSON.stringify(user))
-                alert("login successfully");
-                let option=confirm(" do you want to stert exam portal then click ok ")
+                // alert("login successfully");
+                let option=confirm(" do you want to start exam portal then click ok ")
                 if (option)
                 {
                     window.location.href="examapp.html";
                 }
-                window.location.href="bankapp.html";
+                else
+                {
+                    window.location.href="bankapp.html";
+                }
+                
             }else{
                 alert("login Failed.. please check email or password");
             }
