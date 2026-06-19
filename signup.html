@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank App | Signup</title>
+</head>
+<body>
+    <center>
+        <h1>Registration here</h1>
+        <nav>
+            <a href="index.html">HOME</a>
+            <a href="signin.html">SIGNIN</a>
+        </nav>
+        <br><hr><br>
+        <form id="signupform">
+            <input type="text" placeholder="Enter username" id="uname" required>
+            <br><br>
+            <input type="email" placeholder="Enter email" id="uemail" required>
+            <br><br>
+            <input type="password" placeholder="Enter password" id="upass" required>
+            <br><br>
+            <input type="password" placeholder="Enter confirm password" id="ucpass" required>
+            <br><br>
+            <br><br>
+            <button type="submit">Submit</button>
+            <input type="reset" value="Clear">
+            <a href="index.html"><input type="button" value="Cancel"></a>
+        </form>
+    </center>
+
+    <script>
+        // on click ke jagah par addEventListener , ye naya tareeka hai
+        console.log("Script Loaded");
+        document.getElementById("signupform").addEventListener("submit",function(event){
+            // stops a browser from executing its default built-in action associated with a specific event
+            event.preventDefault(); 
+            console.log("Submit Triggered");
+            let uname = document.getElementById("uname").value;
+            
+            let uemail = document.getElementById("uemail").value;
+
+            let upass = document.getElementById("upass").value;
+            let ucpass = document.getElementById("ucpass").value;
+            console.log(uname,uemail,upass,ucpass);
+
+            let user = {
+                uname,
+                uemail,
+                upass
+            };
+
+            // Get existing users
+            let userlist = JSON.parse(localStorage.getItem("userlist")) || [];
+
+            // Add new user
+            userlist.push(user);
+
+            console.log(userlist);
+
+
+            if(upass===ucpass)
+            {
+                // localStorage.setItem("uname",uname);
+                // localStorage.setItem("uemail",uemail);
+                // localStorage.setItem("upass",upass);;
+                localStorage.setItem("userlist",JSON.stringify(userlist))
+                alert("registeration succesfully done")
+                window.location.href="signin.html"
+            }
+            else
+            {
+                alert("pasword and conform password dose not match. try again!! ")
+            }
+            
+        })
+    </script>
+</body>
+</html>
+
+<!-- // server has sessions
+// client has cookies -->
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-up</title>
+</head>
+<body>
+    <center>
+        <h1>SIGN-UP Here</h1>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="signin.html">signin</a>
+            </nav>
+        <hr><br>
+        <form id="signupform">
+            <input type="text" placeholder="Enter Username" id="uname" required>
+            <br><br>
+            <input type="email" placeholder="Enter EMAIL" id="uemail" required>
+            <br><br>
+            <input type="password" placeholder="Enter Password" id="upass" required>
+            <br><br>
+            <input type="password" placeholder="Enter conform password" id="ucpass" required>
+            <br><br>
+            <input type="submit" value="submit">
+            <input type="reset" value="Clear">
+            <a href="index.html"><input type="button" value="cancel"></a>
+        </form>
+    </center>
+
+    <script>
+        document.getElementById("signupform").addEventListener("submit",function(event)
+        {
+            event.preventDefault();
+            let uname=document.getElementById("uname").value;
+            let uemail=document.getElementById("uemail").value;
+            let upass=document.getElementById("upass").value;
+            let ucpass=document.getElementById("ucpass").value;
+            console.log(uname,uemail,upass,ucpass);
+            if(upass===ucpass)
+            {
+                localStorage.setItem("uname",uname);
+                localStorage.setItem("uemail",uemail);
+                localStorage.setItem("upass",upass);;
+                alert("registeration succesfully done")
+                window.location.href="signin.html"
+            }
+            else
+            {
+                alert("pasword and conform password dose not match. try again!! ")
+            }
+            
+
+        })
+    </script>
+</body>
+</html> -->

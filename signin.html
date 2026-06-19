@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+        
+        <h1>Sign In</h1>
+        <nav>
+            <a href="index.html">HOME</a>
+            <a href="signup.html">SIGNUP</a>
+        </nav>
+        <br><hr><br>
+        <form id="signinform">
+            <input type="email" placeholder="Enter email" id="uemail" required>
+            <br><br>
+            <input type="password" placeholder="Enter password" id="upass" required>
+            <br><br>
+            <input type="submit" value="submit">
+            <input type="reset" value="Clear">
+            <a href="index.html"><input type="button" value="Cancel"></a>
+        </form>
+    </center>
+
+    <script>
+        document.getElementById("signinform").addEventListener("submit",function(event){
+            event.preventDefault();
+            let uemail=document.getElementById("uemail").value;
+            let upass=document.getElementById("upass").value;
+            console.log(uemail,upass);
+
+            // let stored_uemail=localStorage.getItem("uemail");
+            // let stored_upass=localStorage.getItem("upass");
+
+            let userlist = JSON.parse(localStorage.getItem("userlist")) || [];
+
+            let user = userlist.find((i)=>i.uemail===uemail && i.upass===upass); // this gives a boolean value true or false
+
+            if(user){
+                localStorage.setItem('currentuser',JSON.stringify(user))
+                alert("login successfully");
+                window.location.href="bankapp.html";
+            }else{
+                alert("login Failed.. please check email or password");
+            }
+            
+        });
+    </script>
+</body>
+</html>
