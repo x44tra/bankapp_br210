@@ -3,13 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exam app</title>
+    <title>ExamApp</title>
 </head>
 <body>
-    <h1> Welcome to exam portal</h1>
-    <nav>
-        <a href="index.html"><button>logout</button></a>
-    </nav>
+    <center>
+    
+        <h1>Welcome to exam portal</h1>
+        <nav>
+            <a href="index.html"><button>Logout</button></a>
 
+        </nav>
+
+    </center>
+
+    <form id="examform">
+        <label> Q.1 HTML is case-sensitive language</label>
+        <br>
+        <br>
+        <input type="radio" id="q1true" name="q1" value="true">
+        <label for="q1true">True</label>
+        <input type="radio" id="q1false" name="q1" value="false">
+        <label for="q1false">False</label>
+        <br><br>
+        <label> Q.1 JS is object-based language</label>
+        <br>
+        <br>
+        <input type="radio" id="q2true" name="q2" value="true">
+        <label for="q1true">True</label>
+        <input type="radio" id="q2false" name="q2" value="false">
+        <label for="q1false">False</label>
+
+        <br><br>
+        <input type="submit" value="Submit">
+        <input type="reset" value="Cancel">
+        <h1 id="result"></h1>
+    </form>
+
+    <script>
+        document.getElementById("examform").addEventListener("submit",function(event){
+            event.preventDefault();
+            let score = 0;
+            let q1_ans = document.getElementById("q1false").checked;
+            let q2_ans = document.getElementById("q2true").checked;
+            if(q1_ans){
+                score=score+1;
+            }
+            if(q2_ans){
+                score=score+1;
+            }
+            if(!document.querySelector("input[name='q1']:checked")){
+                alert("Please select option");
+            }
+            if(!document.querySelector("input[name='q2']:checked")){
+                alert("Please select option");
+            }
+            document.getElementById("result").innerText="Your score = "+score;
+        })
+    </script>
 </body>
 </html>
